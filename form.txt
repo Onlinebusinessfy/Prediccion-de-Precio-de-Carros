@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimación de Precio de Carro</title>
+</head>
+<body>
+    <h2>Ingrese los detalles del vehículo</h2>
+    <form action="/predict" method="post">
+        <label for="brand">Marca:</label>
+        <select name="brand" id="brand" required>
+            <option value="Maruti">Maruti</option>
+            <option value="Hyundai">Hyundai</option>
+            <option value="Ford">Ford</option>
+            <option value="Renault">Renault</option>
+            <option value="Mini">Mini</option>
+            <option value="Mercedes-Benz">Mercedes-Benz</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Volkswagen">Volkswagen</option>
+            <option value="Honda">Honda</option>
+            <option value="Mahindra">Mahindra</option>
+            <option value="Tata">Tata</option>
+            <option value="Datsun">Datsun</option>
+            <option value="BMW">BMW</option>
+            <option value="Kia">Kia</option>
+            <option value="Audi">Audi</option>
+        </select><br>
+
+        <label for="model">Modelo:</label>
+        <input type="text" name="model" id="model" required><br>
+
+        <label for="vehicle_age">Edad del Vehículo (años):</label>
+        <input type="number" name="vehicle_age" id="vehicle_age" required><br>
+
+        <label for="km_driven">Kilómetros Recorridos:</label>
+        <input type="number" name="km_driven" id="km_driven" required><br>
+
+        <label for="seller_type">Tipo de Vendedor:</label>
+        <select name="seller_type" id="seller_type" required>
+            <option value="Individual">Individual</option>
+            <option value="Dealer">Dealer</option>
+        </select><br>
+
+        <label for="fuel_type">Tipo de Combustible:</label>
+        <select name="fuel_type" id="fuel_type" required>
+            <option value="Petrol">Gasolina</option>
+            <option value="Diesel">Diésel</option>
+            <option value="CNG">Gas Natural Comprimido</option>
+            <option value="Electric">Eléctrico</option>
+        </select><br>
+
+        <label for="transmission_type">Transmisión:</label>
+        <select name="transmission_type" id="transmission_type" required>
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automático</option>
+        </select><br>
+
+        <label for="mileage">Consumo (km/l):</label>
+        <input type="number" step="0.1" name="mileage" id="mileage" required><br>
+
+        <label for="engine">Motor (cc):</label>
+        <input type="number" name="engine" id="engine" required><br>
+
+        <label for="max_power">Potencia Máxima (hp):</label>
+        <input type="number" step="0.1" name="max_power" id="max_power" required><br>
+
+        <label for="seats">Asientos:</label>
+        <input type="number" name="seats" id="seats" required><br>
+
+        <button type="submit">Estimar Precio</button>
+    </form>
+
+    <div>
+        {% if predicted_price %}
+            <h3>{{ predicted_price }}</h3>
+        {% else %}
+            <p>No se pudo realizar la predicción.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
